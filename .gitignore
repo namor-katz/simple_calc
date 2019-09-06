@@ -1,0 +1,14 @@
+# python
+*.db
+*.pyc
+__pycache__
+
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
