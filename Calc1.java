@@ -6,6 +6,7 @@ class Calc1 {
     int b;
 
     Scanner input = new Scanner(System.in); // create scanner?
+    
     System.out.println("Enter number 1: ");
     a = input.nextInt();
     System.out.println("Enter number 2: ");
