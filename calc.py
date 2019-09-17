@@ -1,8 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# это простой калькулятор, который умеет производить действия над 
+#  namor925@gmail.com
+# это простой калькулятор, который умеет производить действия над
 # арабскими и латинскими числами. он умеет складывать-делить-умножать-вычитать
 # любые цифры от 1 до 10 либо от I до X. Смешение стилей он отвергает.
+# this is very simple dual numeric calc.
+
 
 import sys
 
@@ -43,7 +46,7 @@ def check_operans_one_group(operand1,  operand2):
 
 def check_operand_arabic_digit(operand):
     ''' это арабская цифра?'''
-    if operand.isdigit() and  0 < int(operand) < 10:
+    if operand.isdigit() and 0 < int(operand) < 10:
         return True
     else:
         return False
@@ -81,7 +84,7 @@ def calc(operand1, operator, operand2):
 
 
 if __name__ == "__main__":
-    check_arguments_count() # элементов три!
+    check_arguments_count()  # элементов три!
     a = sys.argv[1]
     b = sys.argv[3]
     # второй аргумент - /*-+
@@ -89,19 +92,19 @@ if __name__ == "__main__":
         pass
     else:
         print('operator error')
-    #первая цифра десятичная или римская
+    # первая цифра десятичная или римская
     if check_operand_latin_digit(a) is True or check_operand_arabic_digit(a) is True:
         pass
     else:
         print('не буду нихачу! первый не цифирь!')
         exit()
-    #вторая цифра десятичная или римская
+    # вторая цифра десятичная или римская
     if check_operand_latin_digit(b) is True or check_operand_arabic_digit(b) is True:
         pass
     else:
         print('не буду нихачу! второй не цифирь!')
         exit()
-    new_dicts = lat_to_arabic() # создаем словари для перевода из лат в ар и обратно
+    new_dicts = lat_to_arabic()  # create dicts lat->arabic and reverse
     lat_ar,  ar_lat = new_dicts[0],  new_dicts[1]
     if a in latin_digit:
         a = lat_ar[a]
@@ -117,5 +120,5 @@ if __name__ == "__main__":
             res = ar_lat[res]
         else:
             print("больше десяти,  выведу арабскими ")
-    #TODOS: обработать выход за пределы Х
+    # TODOS: обработать выход за пределы Х
     print(res)
