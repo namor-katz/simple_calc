@@ -3,9 +3,8 @@ class ArabicNumbers {
     //int digit;
     int a, b, c, d, e, f, g, h, i, j;
     boolean if_tru(int digit){
-        if (digit > 0 && digit < 11){ //о питончик, ты топчик (
-            return true;
-            }
+        //о питончик, ты топчик (
+        if (digit > 0 && digit < 11) return true;
         else
             {
                 return false;} //оно не может в один if! омерзительно!
@@ -65,7 +64,7 @@ public class Calculator2 {
 
     // итак,  метод - статик. экземпляр объявлять не надо. аргументы просто
     // как есть, без указания типа. принимаемый тип уже указан в объявлении...
-    CheckLen.che(args);
+    CheckLen.che(args); // проверяем что аргументов ровно 3
 
     int a = Integer.parseInt(args[0]);
     String b = args[1];
@@ -81,7 +80,7 @@ public class Calculator2 {
         
         Ln.a = "I"; Ln.b = "II";
 
-        System.out.print(Ar.if_tru(a) + "\n");
+        System.out.print(Ar.if_tru(a) + "\n"); //вот проверка на то, что это - число.
 
         int z = sum.sum(a, b, c);
         System.out.println(z);
