@@ -125,32 +125,34 @@ public class Calculator2 {
     }
 
     //оба аргумента арабские. если нет выйти
+    boolean result_lat;
     if (is_arabic1 == true && is_arabic2 == true) {
-        System.out.println("Я арабская цифра");
+        result_lat = false;
+        System.out.println("обе цифры арабские, продолжаем.");
         }
     else if (is_arabic1 == false && is_arabic2 == false) {
-        System.out.println("Я латинская цифра ");
+        System.out.println("обе цифры латинские, продолжаем.");
+        result_lat = true;
     }
     else {
         System.out.println("Error! Not mixed args! Good: 1 + 2 OR V - I. BAD 2 + V.");
+        result_lat = false; //оно всё равно выйдет и не пройдет дальше.
         System.exit(0);
     }
 
-    /*
-    boolean diap;
-    if (is_arabic1 == true) {
-        diap = Ar.if_tru(a);
-        if (diap == true) {
-            System.out.println("всё ок");
-        }
-        else {
-            System.out.println("this is bad");
-        }
-    }
-*/
 
         ///уря победа
         int z = sum.sum(a, b, c);
-        System.out.println(z);
+        if (result_lat == false) {
+            System.out.println(z);
+        }
+        else if (result_lat == true) {
+            String z2 = states2.get(z);
+            System.out.println(z2);
+        }
+        else
+            {
+                System.out.println("Так быть не может.");
+            }
     }
 }
