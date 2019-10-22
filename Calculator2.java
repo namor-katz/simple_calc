@@ -92,33 +92,51 @@ public class Calculator2 {
     ArabicNumbers Ar = new ArabicNumbers();
     LatinNumbers Ln = new LatinNumbers();
     Map<String, Integer> states = LatinToArabic.latin_to_arabic(Ln.latin, Ar.arabic);
+    Map<Integer, String> states2 = ArabicToLatin.arabic_to_latin(Ln.latin, Ar.arabic);
 
+    //считываем аргументы командной строки, проверяем их соответствие требованиям.
+    //read stdin, check args
     int a;
+    boolean is_arabic1; //какого хуя ниже по потоку утверждает, что переменной нет? ведь будет либо тру либо катч, и она создастся.
     try {
         a = Integer.parseInt(args[0]);
-        boolean is_arabic1 = true;
+        is_arabic1 = true;
     }
     catch (NumberFormatException nfe) {
         String a2 = args[0];
         a = states.get(a2);
         System.out.println("первый операнд не число, пробую преобразовать.");
-        boolean is_arabic1 = false;
+        is_arabic1 = false;
     }
 
     String b = args[1];
 
     int c;
+    boolean is_arabic2;
     try {
         c = Integer.parseInt(args[2]);
-        boolean is_arabic2 = true;
+        is_arabic2 = true;
     }
     catch (NumberFormatException nfe) {
         String c2 = args[2];
         c = states.get(c2);
         System.out.println("второй операнд не число, пробую преобразовать.");
-        boolean is_arabic2 = false;
+        is_arabic2 = false;
     }
-/*
+
+    //оба аргумента арабские. если нет выйти
+    if (is_arabic1 == true && is_arabic2 == true) {
+        System.out.println("Я арабская цифра");
+        }
+    else if (is_arabic1 == false && is_arabic2 == false) {
+        System.out.println("Я латинская цифра ");
+    }
+    else {
+        System.out.println("Error! Not mixed args! Good: 1 + 2 OR V - I. BAD 2 + V.");
+        System.exit(0);
+    }
+
+    /*
     boolean diap;
     if (is_arabic1 == true) {
         diap = Ar.if_tru(a);
@@ -130,8 +148,6 @@ public class Calculator2 {
         }
     }
 */
-
-
 
         ///уря победа
         int z = sum.sum(a, b, c);
