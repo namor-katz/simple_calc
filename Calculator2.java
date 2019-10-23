@@ -1,4 +1,5 @@
 import java.util.*;
+
 //определяем класс для арабских цифр 1-10
 class ArabicNumbers {
     int[] arabic = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -87,7 +88,7 @@ public class Calculator2 {
     public static void main(String[] args){
     // итак,  метод - статик. экземпляр объявлять не надо. аргументы просто
     // как есть, без указания типа. принимаемый тип уже указан в объявлении...
-    CheckLen.che(args); // проверяем что аргументов ровно 3
+    //CheckLen.che(args); // проверяем что аргументов ровно 3
     //создаём арабские и латинские цифры
     ArabicNumbers Ar = new ArabicNumbers();
     LatinNumbers Ln = new LatinNumbers();
@@ -96,49 +97,64 @@ public class Calculator2 {
 
     //считываем аргументы командной строки, проверяем их соответствие требованиям.
     //read stdin, check args
-    int a;
-    boolean is_arabic1; //какого хуя ниже по потоку утверждает, что переменной нет? ведь будет либо тру либо катч, и она создастся.
+    Scanner in = new Scanner(System.in);
+    System.out.println("введи что нибудь вроде этого 1 + 3 ");
+    String str;
+
     try {
-        a = Integer.parseInt(args[0]);
-        is_arabic1 = true;
-    }
-    catch (NumberFormatException nfe) {
-        String a2 = args[0];
-        a = states.get(a2);
-        System.out.println("первый операнд не число, пробую преобразовать.");
-        is_arabic1 = false;
-    }
+        str = in.nextLine();
+        String[] subStr;
+        String delimeter = " "; // Разделитель
+        subStr = str.split(delimeter); // Разделения строки str с помощью метода split()
+        String aT = subStr[0];
+        String bT = subStr[1];
+        String cT = subStr[2];
+        System.out.println(aT);
 
-    String b = args[1];
-
-    int c;
-    boolean is_arabic2;
-    try {
-        c = Integer.parseInt(args[2]);
-        is_arabic2 = true;
-    }
-    catch (NumberFormatException nfe) {
-        String c2 = args[2];
-        c = states.get(c2);
-        System.out.println("второй операнд не число, пробую преобразовать.");
-        is_arabic2 = false;
-    }
-
-    //оба аргумента арабские. если нет выйти
-    boolean result_lat;
-    if (is_arabic1 == true && is_arabic2 == true) {
-        result_lat = false;
-        System.out.println("обе цифры арабские, продолжаем.");
+        int a;
+        boolean is_arabic1;
+        try {
+            a = Integer.parseInt(aT);
+            is_arabic1 = true;
         }
-    else if (is_arabic1 == false && is_arabic2 == false) {
-        System.out.println("обе цифры латинские, продолжаем.");
-        result_lat = true;
-    }
-    else {
-        System.out.println("Error! Not mixed args! Good: 1 + 2 OR V - I. BAD 2 + V.");
-        result_lat = false; //оно всё равно выйдет и не пройдет дальше.
-        System.exit(0);
-    }
+        catch (NumberFormatException nfe) {
+            String a2 = aT;
+            a = states.get(a2);
+            System.out.println("первый операнд не число, пробую преобразовать.");
+            is_arabic1 = false;
+        }
+
+
+        String b = bT; //+-*/
+
+        int c;
+        boolean is_arabic2;
+        try {
+            c = Integer.parseInt(cT);
+            is_arabic2 = true;
+        }
+        catch (NumberFormatException nfe) {
+            String c2 = cT;
+            c = states.get(c2);
+            System.out.println("второй операнд не число, пробую преобразовать.");
+            is_arabic2 = false;
+        }
+
+        //оба аргумента арабские. если нет выйти
+        boolean result_lat;
+        if (is_arabic1 == true && is_arabic2 == true) {
+            result_lat = false;
+            System.out.println("обе цифры арабские, продолжаем.");
+        }
+        else if (is_arabic1 == false && is_arabic2 == false) {
+            System.out.println("обе цифры латинские, продолжаем.");
+            result_lat = true;
+        }
+        else {
+            System.out.println("Error! Not mixed args! Good: 1 + 2 OR V - I. BAD 2 + V.");
+            result_lat = false; //оно всё равно выйдет и не пройдет дальше.
+            System.exit(0);
+        }
 
 
         ///уря победа
@@ -151,8 +167,13 @@ public class Calculator2 {
             System.out.println(z2);
         }
         else
-            {
-                System.out.println("Так быть не может.");
-            }
+        {
+            System.out.println("Так быть не может.");
+        }
+
+        }
+
+    catch (java.lang.ArrayIndexOutOfBoundsException e)
+        {System.out.println("требуется цифра, знак операции, цифра. например 5 - 1");}
     }
 }
